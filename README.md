@@ -16,7 +16,7 @@ Then re-build the image. In the future we'll put in place a more flexible config
 
 `docker pull softinstigate/restheart`
 
-(alternatively you can just build your own from the Dockerfile: `build -t <image name> .`)
+(alternatively you can just build your own image from the Dockerfile: `build -t <image_name> .`. Then you can also edit the restheart.yml file to match your configuration).
 
 2) Run [MongoDB](http://dockerfile.github.io/#/mongodb):
 
