@@ -16,6 +16,8 @@ Then re-build the image. In the future we'll put in place a more flexible config
 
 `docker pull softinstigate/restheart`
 
+(alternatively you can just build your own from the Dockerfile: `build -t <image name> .`)
+
 2) Run [MongoDB](http://dockerfile.github.io/#/mongodb):
 
 `docker run -d -p 27017:27017 --name mongodb dockerfile/mongodb`
