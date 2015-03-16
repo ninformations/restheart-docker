@@ -4,11 +4,9 @@ Experimental [Docker](https://www.docker.com) container for [RESTHeart](http://r
 
 ## Setup
 
-1) Pull the repo: 
+1) Pull the images: 
 
 `docker pull softinstigate/restheart`
-
-(alternatively you can just build your own image from the Dockerfile: `build -t <image_name> .`. Then you can also edit the restheart.yml file to match your configuration).
 
 2) Run the [MongoDB](http://dockerfile.github.io/#/mongodb) container:
 
