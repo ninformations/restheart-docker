@@ -1,14 +1,6 @@
-# Docker RESTHeart
+# Docker for RESTHeart
 
-An experimental [Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org).
-
-Note: this has been tested only with [boot2docker](http://boot2docker.io) and it usues its IP (usually `192.168.59.103`), so RESTHeart expects a MongoDB instance running at the same IP. If you are not running boot2docker then it is mandatory to change the restheart.yml file, specifically the following section
-
-    mongo-servers:
-        - host: 192.168.59.103
-          port: 27017
-
-Then re-build the image. In the future we'll put in place a more flexible configuration.
+Experimental [Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org).
 
 ## Setup
 
@@ -18,19 +10,20 @@ Then re-build the image. In the future we'll put in place a more flexible config
 
 (alternatively you can just build your own image from the Dockerfile: `build -t <image_name> .`. Then you can also edit the restheart.yml file to match your configuration).
 
-2) Run [MongoDB](http://dockerfile.github.io/#/mongodb):
+2) Run the [MongoDB](http://dockerfile.github.io/#/mongodb) container:
 
-`docker run -d -p 27017:27017 --name mongodb dockerfile/mongodb`
+`docker run -d --name mongodb dockerfile/mongodb`
 
 3) Run RESTHeart:
 
-`docker run -d -p 8080:8080 --name restheart softinstigate/restheart`
+`docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart`
 
-4) Check that is working, point your browser to:
+4) Check that is working:
 
-`http://192.168.59.103:8080/browser`
+If you are running boot2docker point your browser to: [http://192.168.59.103:8080/browser](http://192.168.59.103:8080/browser), otherwise: [http://localhost:8080/browser](http://localhost:8080/browser). To know the boot2docker IP issue the `boot2docker ip` command.
 
-Note: there is a problem after stopping the RESTHeart container (`docker stop restheart`), so it's necessary to delete (`docker rm restheart`) and re-run it.
+To stop RESTHeart just issue a normal `CTRL-C`.
 
+You can start it again with `docker start -i -a restheart`.
 
 Available at the [Docker Hub](https://registry.hub.docker.com/u/softinstigate/restheart/).
