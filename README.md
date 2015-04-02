@@ -1,12 +1,14 @@
 # Docker for RESTHeart
 
 Experimental [Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org).
+It makes use of the official [MongoDB](http://dockerfile.github.io/#/mongodb) image.
 
 ## Setup
 
-1) Pull the images: 
+1) Pull the MongoDB and RESTHeart images: 
 
-`docker pull softinstigate/restheart`
+ 1. `docker pull dockerfile/mongodb`
+ 1. `docker pull softinstigate/restheart`
 
 2) Run the [MongoDB](http://dockerfile.github.io/#/mongodb) container:
 
