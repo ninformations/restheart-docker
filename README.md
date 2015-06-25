@@ -22,9 +22,9 @@ If you want to make it accessible from your host and also add a persistent data 
 
 `docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.0`
 
-The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever you like. If you don't attach a volume then all your data will be lost when you stop the container.
+The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever you like. If you don't attach a volume then all your data will be lost when you delete the container.
 
-### 3) Run RESTHeart interactively:
+### 3) Run RESTHeart interactively, providing a link to the mongodb instance
 
 `docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart`
 
@@ -36,7 +36,7 @@ If you are running boot2docker point your browser to: [http://192.168.59.103:808
 
 To stop RESTHeart just issue a normal `CTRL-C`.
 
-You can start it again with `docker start -i -a restheart`.
+You can start it again with `docker start -i -a restheart`. For some reasons it could happen that the second time it refuses to start because there's a lock file, but then the easiest thing to do is to delete the container and just create a new one, it's ligthing fast.
 
 To stop MongoDb issue `docker stop mongodb`
 
