@@ -1,7 +1,7 @@
 # Docker for RESTHeart
 
 [Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org).
-It makes use of the official [MongoDB](https://registry.hub.docker.com/_/mongo/) image.
+It creates a Docker container with a JVM running RESTHeart, linked to another container running MongoDB, which makes use of the official [MongoDB](https://registry.hub.docker.com/_/mongo/) image.
 
 ## Setup
 
