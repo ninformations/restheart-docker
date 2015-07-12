@@ -74,7 +74,7 @@ Boopt2Docker usually maps to `192.168.59.103`, but to know the real IP in your o
 
 To stop the RESTHeart background daemon just issue `docker stop restheart`, or simply press `CTRL-C` if it was running in foreground.
 
-You can start it again with `docker start restheart`, but it's not recommended. As RESTHeart is a stateless service, best Docker practices would suggest to just delete the stopped container with `docker rm restheart` and just re-create a new one, it's ligthing fast and you are sure you are starting with a clean instance.
+You can start it again with `docker start restheart`, but it's not recommended. As RESTHeart is a stateless service, best Docker practices would suggest to just delete the stopped container with `docker rm restheart` and re-create a new one, it's ligthing fast and you are sure you are starting with a clean instance.
 
 The MongoDB container instead is stateful, so if you delete it then you'll lose all data. In this case you might prefer to start it again, so that your data is preserved.
 
