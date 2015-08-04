@@ -13,7 +13,6 @@ RUN rm -rf browser/
 RUN mv -f hal-browser-master/ browser/
 
 WORKDIR /opt/restheart-develop
-# RUN git submodule foreach git pull origin master
 RUN mvn package
 
 COPY etc/* /opt/restheart-develop/target/etc/
