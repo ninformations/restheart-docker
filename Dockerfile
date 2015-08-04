@@ -1,13 +1,22 @@
-FROM java:8u45-jre
+FROM maven:3-jdk-8
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
 WORKDIR /opt/
-ADD https://github.com/SoftInstigate/restheart/releases/download/0.10.3/restheart-0.10.3.tar.gz /opt/
-RUN tar zxvf restheart-0.10.3.tar.gz
+ADD https://github.com/SoftInstigate/restheart/archive/develop.zip /opt/
+RUN unzip develop.zip
 
-WORKDIR /opt/restheart-0.10.3
-COPY etc/* /opt/restheart-0.10.3/etc/
+WORKDIR /opt/restheart-develop/src/main/resources
+ADD https://github.com/mikekelly/hal-browser/archive/master.zip /opt/restheart-develop/src/main/resources/
+RUN unzip master.zip
+RUN rm -rf browser/
+RUN mv -f hal-browser-master/ browser/
 
-CMD java -server -jar restheart.jar etc/restheart.yml
+WORKDIR /opt/restheart-develop
+# RUN git submodule foreach git pull origin master
+RUN mvn package
+
+COPY etc/* /opt/restheart-develop/target/etc/
+
+CMD java -server -jar target/restheart.jar target/etc/restheart.yml
 EXPOSE 8080
