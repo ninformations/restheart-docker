@@ -2,12 +2,14 @@ FROM java:8u45-jre
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
-WORKDIR /opt/
-ADD https://github.com/SoftInstigate/restheart/releases/download/0.10.4/restheart-0.10.4.tar.gz /opt/
-RUN tar zxvf restheart-0.10.4.tar.gz
+ENV release 0.10.4
 
-WORKDIR /opt/restheart-0.10.4
-COPY etc/* /opt/restheart-0.10.4/etc/
+WORKDIR /opt/
+ADD https://github.com/SoftInstigate/restheart/releases/download/${release}/restheart-${release}.tar.gz /opt/
+RUN tar zxvf restheart-${release}.tar.gz
+
+WORKDIR /opt/restheart-${release}
+COPY etc/* /opt/restheart-${release}/etc/
 
 CMD java -server -jar restheart.jar etc/restheart.yml
 EXPOSE 8080
