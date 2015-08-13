@@ -47,7 +47,7 @@ Below an example output
 ```
 06:34:08.562 [main] INFO  org.restheart.Bootstrapper - Starting RESTHeart ********************************************
 06:34:08.585 [main] INFO  org.restheart.Bootstrapper - Creating pid file /var/run/restheart.pid
-06:34:08.717 [main] INFO  org.restheart.Bootstrapper - RESTHeart version 0.10.3
+06:34:08.717 [main] INFO  org.restheart.Bootstrapper - RESTHeart version 0.10.4
 06:34:08.815 [main] INFO  org.restheart.Bootstrapper - Initializing MongoDB connection pool to mongodb:27017 
 06:34:08.816 [main] INFO  org.restheart.Bootstrapper - MongoDB connection pool initialized
 06:34:09.223 [main] INFO  org.restheart.Bootstrapper - Token based authentication enabled with token TTL 15 minutes
@@ -69,6 +69,8 @@ Below an example output
 If you are running boot2docker point your browser to: [http://192.168.59.103:8080/browser](http://192.168.59.103:8080/browser), otherwise: [http://localhost:8080/browser](http://localhost:8080/browser).
 
 Boopt2Docker usually maps to `192.168.59.103`, but to know the real IP in your own system check it using the `boot2docker ip` command.
+
+**Warning**: the new [Docker Toolbox](https://www.docker.com/toolbox) uses a different IP address. Please refer to specific details there.
 
 ### 5) Stop and start again
 
