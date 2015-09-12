@@ -8,21 +8,17 @@
 
 ---
 users:
-    - userid: a
-      password: a
-      roles: [admins]
-    
-    - userid: user
-      password: changeit
+    - userid: admin
+      password: admin
+      roles: [users, admins]
+
+    - userid: user1
+      password: user1
       roles: [users]
           
     - userid: user2
-      password: changeit
+      password: user2
       roles: [users]
-    
-    - userid: admin
-      password: changeit
-      roles: [users, admins]
       
 permissions:
 # users with role 'admins' can do anything
