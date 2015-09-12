@@ -1,48 +1,52 @@
 # Docker for RESTHeart
 
 [Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org).
-It creates a Docker container with a JVM running RESTHeart, linked to another container running MongoDB, which makes use of the official [MongoDB](https://registry.hub.docker.com/_/mongo/) image.
+It creates a Docker container with a JRE running RESTHeart, linked to another container running MongoDB, which makes use of the official [MongoDB](https://registry.hub.docker.com/_/mongo/) image.
 
-## Setup
+## Build
+
+If you want to build this Docker image by yourself, just clone this repo and issue the build command, providing a image name:
+
+    docker build -t <image_name> .
+
+## Run
+
+If you want to run the pre-built Docker image from the [Hub](https://hub.docker.com/r/softinstigate/restheart/) then:
 
 ### 1) Pull the MongoDB and RESTHeart images: 
 
  1. `docker pull mongo`
  1. `docker pull softinstigate/restheart`
 
- Note: if you want to pull a specific mongodb image only, you could add the exact tag, for example:
+ Note: if you want to pull a specific MongoDB image only, you could add the exact tag, for example `docker pull mongo:3.0.6`
 
-    docker pull mongo:3.0
+### 2) Run the MongoDB container 
 
-### 2) Run the MongoDB container (add a tag to specify the exact MongoDB version other than "latest"):
-
-`docker run -d --name mongodb mongo:3.0`
+    docker run -d --name mongodb mongo
 
 If you want to make it accessible from your host and also add a persistent data volume:
 
-`docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.0`
+    docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.0
 
 The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever you like. If you don't attach a volume then all your data will be lost when you delete the container.
 
-### 3) Run RESTHeart interactively, providing a link to the mongodb instance
+### 3) Run RESTHeart interactively
 
-`docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart`
+Run in **foreground**, linking to the mongodb instance, mapping the container's 8080 port to the same port on host: 
 
-In alternative, you might prefer to run it in background
+    docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart
 
-`docker run -d -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart`
+In alternative, you might prefer to run it in **background**:
+
+    docker run -d -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart
 
 ### 4) Check that is working:
 
-First, check RESTHeart's logs
+Open the RESTHeart's logs:
 
-`docker logs restheart`
+    docker logs restheart
 
-You will see the log file, which should end with 
-
-`org.restheart.Bootstrapper - RESTHeart started **********************************************`
-
-Below an example output
+Finally you should see something similar to this:
 
 ```
 06:34:08.562 [main] INFO  org.restheart.Bootstrapper - Starting RESTHeart ********************************************
@@ -66,24 +70,61 @@ Below an example output
 06:34:09.833 [main] INFO  org.restheart.Bootstrapper - RESTHeart started **********************************************
 ```
 
-If you are running boot2docker point your browser to: [http://192.168.59.103:8080/browser](http://192.168.59.103:8080/browser), otherwise: [http://localhost:8080/browser](http://localhost:8080/browser).
+## Accessing the HAL Browser
+
+If you are running boot2docker or point your browser to something like:
+
+ * [http://192.168.59.103:8080/browser](http://192.168.59.103:8080/browser)
+
+otherwise if you are running Docker directly on Linux:
+
+ * [http://localhost:8080/browser](http://localhost:8080/browser).
 
 Boopt2Docker usually maps to `192.168.59.103`, but to know the real IP in your own system check it using the `boot2docker ip` command.
 
-**Warning**: the new [Docker Toolbox](https://www.docker.com/toolbox) uses a different IP address. Please refer to specific details there.
+Note that [Docker Toolbox](https://www.docker.com/toolbox) uses a different IP address. In  my case to open the HAL Browser I point to
 
-### 5) Stop and start again
+ * [http://192.168.99.100:8080/browser](http://192.168.99.100:8080/browser).
 
-To stop the RESTHeart background daemon just issue `docker stop restheart`, or simply press `CTRL-C` if it was running in foreground.
+### Credentials
 
-You can start it again with `docker start restheart`, but it's not recommended. As RESTHeart is a stateless service, best Docker practices would suggest to just delete the stopped container with `docker rm restheart` and re-create a new one, it's ligthing fast and you are sure you are starting with a clean instance.
+When the browser pop-up asks for credentials then use the following:
+    
+    username: admin
+    password: admin
 
-The MongoDB container instead is stateful, so if you delete it then you'll lose all data. In this case you might prefer to start it again, so that your data is preserved.
+## Stop and start again
 
-To stop MongoDb issue `docker stop mongodb`
+To stop the RESTHeart background daemon just issue
 
-To start MongoDb again `docker start mongodb`
+    docker stop restheart
+
+or simply press `CTRL-C` if it was running in foreground.
+
+You can start it again with
+
+    docker start restheart
+
+but it's not recommended. As RESTHeart is a stateless service, best Docker practices would suggest to just delete the stopped container with
+
+    docker rm restheart
+
+and re-create a new one, it's ligthing fast and you are sure you are starting with a clean instance.
+
+The MongoDB container instead is stateful, so if you delete it then you'll lose all data unless you attached to it a persistent volume. In this case you might prefer to start it again, so that your data is preserved.
+
+To stop MongoDb issue
+
+    docker stop mongodb
+
+To start MongoDb again
+
+    docker start mongodb
 
 Note that you must always stop RESTHeart before MongoDB, or you might experience data losses.
 
 Available at the [Docker Hub](https://registry.hub.docker.com/u/softinstigate/restheart/).
+
+## Next Steps
+
+When you containers are up and running you can go to the official [RESTHEart's Documentation](https://softinstigate.atlassian.net/wiki/display/RH/Documentation).
