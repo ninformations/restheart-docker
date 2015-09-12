@@ -1,4 +1,4 @@
-FROM java:8u45-jre
+FROM java:8u66-jre
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
