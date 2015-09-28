@@ -2,7 +2,7 @@ FROM java:8u66-jre
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
-ENV release 0.10.4
+ENV release 1.0.0
 
 WORKDIR /opt/
 ADD https://github.com/SoftInstigate/restheart/releases/download/${release}/restheart-${release}.tar.gz /opt/
