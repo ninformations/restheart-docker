@@ -1,6 +1,7 @@
 # Docker for RESTHeart
 
-[Docker](https://www.docker.com) container for RESTHeart API Server [restheart.org](http://restheart.org).
+[Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org) API Server.
+
 It creates a Docker container with a JRE running RESTHeart, linked to another container running MongoDB, which makes use of the official [MongoDB](https://registry.hub.docker.com/_/mongo/) image.
 
 ## Build
@@ -13,14 +14,14 @@ If you want to build this Docker image by yourself, just clone this repo and iss
 
 If you want to run the pre-built Docker image from the [Hub](https://hub.docker.com/r/softinstigate/restheart/) then:
 
-### 1) Pull the MongoDB and RESTHeart images: 
+### 1) Pull the MongoDB and RESTHeart images:
 
  1. `docker pull mongo`
  1. `docker pull softinstigate/restheart`
 
  Note: if you want to pull a specific MongoDB image only, you could add the exact tag, for example `docker pull mongo:3.0.6`
 
-### 2) Run the MongoDB container 
+### 2) Run the MongoDB container
 
     docker run -d --name mongodb mongo
 
@@ -32,7 +33,7 @@ The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever
 
 ### 3) Run RESTHeart interactively
 
-Run in **foreground**, linking to the mongodb instance, mapping the container's 8080 port to the same port on host: 
+Run in **foreground**, linking to the mongodb instance, mapping the container's 8080 port to the same port on host:
 
     docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart
 
@@ -52,7 +53,7 @@ Finally you should see something similar to this:
 06:34:08.562 [main] INFO  org.restheart.Bootstrapper - Starting RESTHeart ********************************************
 06:34:08.585 [main] INFO  org.restheart.Bootstrapper - Creating pid file /var/run/restheart.pid
 06:34:08.717 [main] INFO  org.restheart.Bootstrapper - RESTHeart version 1.0.0
-06:34:08.815 [main] INFO  org.restheart.Bootstrapper - Initializing MongoDB connection pool to mongodb:27017 
+06:34:08.815 [main] INFO  org.restheart.Bootstrapper - Initializing MongoDB connection pool to mongodb:27017
 06:34:08.816 [main] INFO  org.restheart.Bootstrapper - MongoDB connection pool initialized
 06:34:09.223 [main] INFO  org.restheart.Bootstrapper - Token based authentication enabled with token TTL 15 minutes
 06:34:09.425 [main] INFO  org.restheart.Bootstrapper - HTTPS listener bound at 0.0.0.0:4443
@@ -89,7 +90,7 @@ Note that [Docker Toolbox](https://www.docker.com/toolbox) uses a different IP a
 ### Credentials
 
 When the browser pop-up asks for credentials then use the following:
-    
+
     username: admin
     password: admin
 
