@@ -1,8 +1,14 @@
-# Docker for RESTHeart
+# Docker container for RESTHeart
 
-[Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org) API Server.
+<img src="https://www.docker.com/sites/all/themes/docker/assets/images/logo.png" width="200"></img>
 
-It creates a Docker container with a JRE running RESTHeart, linked to another container running MongoDB, which makes use of the official [MongoDB](https://registry.hub.docker.com/_/mongo/) image.
+## Introduction
+
+This README explains how to build your own Docker image for [RESTHeart](http://restheart.org), the REST API Server for MongoDB.
+
+> Pre-built images are already available at the [Docker Hub](https://hub.docker.com/r/softinstigate/restheart/).
+
+This Dockerfile creates a Docker container with a JRE 8 running RESTHeart on port 8080, linked to another container running MongoDB 3.0.
 
 ## Build
 
@@ -12,20 +18,20 @@ If you want to build this Docker image by yourself, just clone this repo and iss
 
 ## Run
 
-If you want to run the pre-built Docker image from the [Hub](https://hub.docker.com/r/softinstigate/restheart/) then:
+If you want to [run](https://docs.docker.com/reference/commandline/run/) the pre-built Docker image from the [Hub](https://hub.docker.com/r/softinstigate/restheart/) then:
 
 ### 1) Pull the MongoDB and RESTHeart images:
 
  1. `docker pull mongo`
  1. `docker pull softinstigate/restheart`
 
- Note: if you want to pull a specific MongoDB image only, you could add the exact tag, for example `docker pull mongo:3.0.6`
+> It's recommended to pull a specific MongoDB image only, for example `docker pull mongo:3.0`. RESTHeart has been tested so far with MongoDB 2.6 and 3.0.
 
 ### 2) Run the MongoDB container
 
-    docker run -d --name mongodb mongo
+    docker run -d --name mongodb mongo:3.0
 
-If you want to make it accessible from your host and also add a persistent data volume:
+If you want to make it accessible from your host and, for example, also add a [persistent data volume](https://docs.docker.com/userguide/dockervolumes/):
 
     docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.0
 
@@ -106,13 +112,9 @@ You can start it again with
 
     docker start restheart
 
-but it's not recommended. As RESTHeart is a stateless service, best Docker practices would suggest to just delete the stopped container with
+but it's **not recommended**: RESTHeart is a stateless service, best Docker practices would suggest to just delete the stopped container with `docker rm restheart` or to run it in foreground with the `--rm` parameter, so that it will be automatically removed when it exits.
 
-    docker rm restheart
-
-and re-create a new one, it's ligthing fast and you are sure you are starting with a clean instance.
-
-The MongoDB container instead is stateful, so if you delete it then you'll lose all data unless you attached to it a persistent volume. In this case you might prefer to start it again, so that your data is preserved.
+The MongoDB container instead is stateful, so if you delete it then you'll lose all data unless you attached to it a persistent volume. In this case you might prefer to start it again, so that your data is preserved, or ypu might prefer to attach a [Docker Volume](https://docs.docker.com/userguide/dockervolumes/) to it.
 
 To stop MongoDb issue
 
@@ -122,10 +124,12 @@ To start MongoDb again
 
     docker start mongodb
 
-Note that you must always stop RESTHeart before MongoDB, or you might experience data losses.
-
-Available at the [Docker Hub](https://registry.hub.docker.com/u/softinstigate/restheart/).
+Note that you must **always stop RESTHeart before MongoDB**, or you might experience data losses.
 
 ## Next Steps
 
 When you containers are up and running you can go to the official [RESTHEart's Documentation](https://softinstigate.atlassian.net/wiki/display/RH/Documentation).
+
+<hr></hr>
+
+_Made with :heart: by [The SoftInstigate Team](http://www.softinstigate.com/). Follow us on [Twitter](https://twitter.com/softinstigate)_.
