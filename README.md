@@ -1,6 +1,6 @@
 # Docker container for RESTHeart
 
-<img src="https://www.docker.com/sites/all/themes/docker/assets/images/logo.png" width="200"></img>
+![Docker logo](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
 
 ## Introduction
 
@@ -79,23 +79,19 @@ Finally you should see something similar to this:
 
 ## Accessing the HAL Browser
 
-If you are running boot2docker or point your browser to something like:
-
- * [http://192.168.59.103:8080/browser](http://192.168.59.103:8080/browser)
-
-otherwise if you are running Docker directly on Linux:
-
- * [http://localhost:8080/browser](http://localhost:8080/browser).
-
-Boopt2Docker usually maps to `192.168.59.103`, but to know the real IP in your own system check it using the `boot2docker ip` command.
-
-Note that [Docker Toolbox](https://www.docker.com/toolbox) uses a different IP address. In  my case to open the HAL Browser I point to
+If you are running the `docker-machine` from [Docker Toolbox](https://www.docker.com/toolbox) then point your browser to something like:
 
  * [http://192.168.99.100:8080/browser](http://192.168.99.100:8080/browser).
 
+Beware your configuration might use a different IP address than `192.168.99.100`. Issue the [env](https://docs.docker.com/machine/reference/env/) command to discover the real IP (usually `docker-machine env default`)
+
+If you are running Docker directly on a Linux box:
+
+ * [http://localhost:8080/browser](http://localhost:8080/browser).
+
 ### Credentials
 
-When the browser pop-up asks for credentials then use the following:
+Whenever the browser asks for credentials then use the following:
 
     username: admin
     password: admin
