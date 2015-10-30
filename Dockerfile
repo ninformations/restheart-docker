@@ -3,19 +3,19 @@ FROM maven:3-jdk-8
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
 WORKDIR /opt/
-ADD https://github.com/SoftInstigate/restheart/archive/develop.zip /opt/
-RUN unzip develop.zip
+ADD https://github.com/SoftInstigate/restheart/archive/master.zip /opt/
+RUN unzip master.zip
 
-WORKDIR /opt/restheart-develop/src/main/resources
-ADD https://github.com/mikekelly/hal-browser/archive/master.zip /opt/restheart-develop/src/main/resources/
+WORKDIR /opt/restheart-master/src/main/resources
+ADD https://github.com/mikekelly/hal-browser/archive/master.zip /opt/restheart-master/src/main/resources/
 RUN unzip master.zip
 RUN rm -rf browser/
 RUN mv -f hal-browser-master/ browser/
 
-WORKDIR /opt/restheart-develop
-RUN mvn package
+WORKDIR /opt/restheart-master
+RUN mvn package -DskipIts=false
 
-COPY etc/* /opt/restheart-develop/target/etc/
+COPY etc/* /opt/restheart-master/target/etc/
 
-CMD java -server -jar target/restheart.jar target/etc/restheart.yml
-EXPOSE 8080
+#CMD java -server -jar target/restheart.jar target/etc/restheart.yml
+#EXPOSE 8080
