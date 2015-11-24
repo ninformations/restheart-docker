@@ -9,7 +9,7 @@
 ---
 users:
     - userid: admin
-      password: admin
+      password: changeit
       roles: [users, admins]
 
     - userid: user1

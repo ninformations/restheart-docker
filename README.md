@@ -94,7 +94,7 @@ If you are running Docker directly on a Linux box:
 Whenever the browser asks for credentials then use the following:
 
     username: admin
-    password: admin
+    password: changeit
 
 ## Stop and start again
 
