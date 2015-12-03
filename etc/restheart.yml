@@ -48,7 +48,7 @@ use-embedded-keystore: true
 #
 # more information at http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html
 
-mongo-uri: mongodb://127.0.0.1
+mongo-uri: mongodb://mongodb
 
 # Use mongo-mounts to bind URls to mongodb resources using the out-of-the-box URL rewrite feature.
 mongo-mounts:
@@ -137,10 +137,10 @@ metadata-named-singletons:
 
 idm:    
     implementation-class: org.restheart.security.impl.SimpleFileIdentityManager
-    conf-file: ./etc/security.yml
+    conf-file: security.yml
 access-manager:    
     implementation-class: org.restheart.security.impl.SimpleAccessManager
-    conf-file: ./etc/security.yml
+    conf-file: security.yml
 
 # authentication token
 

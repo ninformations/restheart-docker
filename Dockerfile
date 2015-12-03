@@ -13,9 +13,16 @@ RUN rm -rf browser/
 RUN mv -f hal-browser-master/ browser/
 
 WORKDIR /opt/restheart-master
-RUN mvn package -DskipIts=false
+RUN mvn package
 
-COPY etc/* /opt/restheart-master/target/etc/
+COPY etc/* /opt/restheart/
+RUN cp target/restheart.jar /opt/restheart/
+COPY entrypoint.sh /entrypoint.sh
 
-CMD java -server -jar target/restheart.jar target/etc/restheart.yml
+WORKDIR /opt/restheart
+
+COPY entrypoint.sh rh-entrypoint.sh
+
+ENTRYPOINT ["./rh-entrypoint.sh"]
+CMD ["restheart.yml"]
 EXPOSE 8080 4443
