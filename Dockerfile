@@ -16,5 +16,4 @@ COPY entrypoint.sh rh-entrypoint.sh
 
 ENTRYPOINT ["./rh-entrypoint.sh"]
 CMD ["restheart.yml"]
-
 EXPOSE 8080 4443
