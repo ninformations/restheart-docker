@@ -4,8 +4,6 @@ rh:
     - "8080:8080"
   environment:
     - MONGO_HOST=mongodb
-  volumes:
-    - /Users/mturatti/.m2:/root/.m2:rw
   links:
     - mongodb
 mongodb:
