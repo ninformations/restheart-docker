@@ -13,4 +13,4 @@ WORKDIR /opt/restheart
 COPY etc/* /opt/restheart/etc/
 
 CMD java -server -jar restheart.jar etc/restheart.yml
-EXPOSE 8080
+EXPOSE 8080 4443
