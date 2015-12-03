@@ -12,5 +12,9 @@ RUN mv restheart-${release} restheart
 WORKDIR /opt/restheart
 COPY etc/* /opt/restheart/etc/
 
-CMD java -server -jar restheart.jar etc/restheart.yml
-EXPOSE 8080
+COPY entrypoint.sh rh-entrypoint.sh
+
+ENTRYPOINT ["./rh-entrypoint.sh"]
+CMD ["restheart.yml"]
+
+EXPOSE 8080 4443

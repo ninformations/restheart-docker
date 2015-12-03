@@ -77,6 +77,18 @@ Finally you should see something similar to this:
 06:34:09.833 [main] INFO  org.restheart.Bootstrapper - RESTHeart started **********************************************
 ```
 
+### 5) Pass arguments to RESTHeart and JVM
+
+You can append arguments to *docker run* command to provide RESTHeart and the JVM with arguments.
+
+For example you can mount an alternate configuration file and specify it as an argument
+
+`docker run -i -t -p 8080:8080 -v my-conf-file.yml:/opt/restheart/etc/my-conf-file.yml:ro --name restheart --link mongodb:mongodb softinstigate/restheart my-conf-file.yml`
+
+If you want to pass system properties to the JVM, just specify -D or -X arguments. Note that in this case you **need** to provide the configuration file as well.
+
+`docker run -i -t -p 8080:8080 -v my-conf-file.yml:/opt/restheart/etc/my-conf-file.yml:ro --name restheart --link mongodb:mongodb softinstigate/restheart restheart.yml -Dkey=value`
+
 ## Accessing the HAL Browser
 
 If you are running the `docker-machine` from [Docker Toolbox](https://www.docker.com/toolbox) then point your browser to something like:
