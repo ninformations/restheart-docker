@@ -17,5 +17,5 @@ RUN mvn package -DskipIts=false
 
 COPY etc/* /opt/restheart-master/target/etc/
 
-#CMD java -server -jar target/restheart.jar target/etc/restheart.yml
-#EXPOSE 8080
+CMD java -server -jar target/restheart.jar target/etc/restheart.yml
+EXPOSE 8080 4443
