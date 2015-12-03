@@ -52,6 +52,6 @@ For example you can mount an alternate configuration file and specify it as an a
 
 If you want to pass system properties to the JVM, just specify -D or -X arguments. Note that in this case you **need** to provide the configuration file as well.
 
-`docker run -i -t -p 8080:8080 -v my-conf-file.yml:/opt/restheart/etc/my-conf-file.yml:ro --name restheart --link mongodb:mongodb softinstigate/restheart restheart.yml -Dkey=value`
+`docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart restheart.yml -Dkey=value`
 
 Available at the [Docker Hub](https://registry.hub.docker.com/u/softinstigate/restheart/).
