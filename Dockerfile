@@ -2,27 +2,17 @@ FROM maven:3-jdk-8
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
+ENV release 1.2.0-SNAPSHOT
+
 WORKDIR /opt/
-ADD https://github.com/SoftInstigate/restheart/archive/master.zip /opt/
-RUN unzip master.zip
+RUN mvn dependency:get -DrepoUrl=https://oss.sonatype.org/content/repositories/snapshots/ \
+-Dartifact=org.restheart:restheart:${release}:zip \
+-Ddest=restheart.zip
 
-WORKDIR /opt/restheart-master/src/main/resources
-ADD https://github.com/mikekelly/hal-browser/archive/master.zip /opt/restheart-master/src/main/resources/
-RUN unzip master.zip
-RUN rm -rf browser/
-RUN mv -f hal-browser-master/ browser/
-
-WORKDIR /opt/restheart-master
-RUN mvn package
-
-COPY etc/* /opt/restheart/
-RUN cp target/restheart.jar /opt/restheart/
-COPY entrypoint.sh /entrypoint.sh
+RUN unzip restheart.zip && mv restheart-${release} restheart
 
 WORKDIR /opt/restheart
+COPY etc/* /opt/restheart/etc/
 
-COPY entrypoint.sh rh-entrypoint.sh
-
-ENTRYPOINT ["./rh-entrypoint.sh"]
-CMD ["restheart.yml"]
 EXPOSE 8080 4443
+CMD java -server -jar restheart.jar etc/restheart.yml
