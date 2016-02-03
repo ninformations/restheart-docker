@@ -13,6 +13,8 @@ RUN unzip restheart.zip && mv restheart-${release} restheart
 
 WORKDIR /opt/restheart
 COPY etc/* /opt/restheart/etc/
+COPY entrypoint.sh /opt/restheart/
 
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["etc/restheart.yml"]
 EXPOSE 8080 4443
-CMD java -server -jar restheart.jar etc/restheart.yml
