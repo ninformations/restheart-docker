@@ -1,5 +1,7 @@
 # Docker container for RESTHeart
 
+[![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io')
+
 ![Docker logo](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
 
 ## Introduction
