@@ -2,14 +2,16 @@ FROM maven:3-jdk-8
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
-ENV release 1.2.0-SNAPSHOT
+ENV release 2.0.0-SNAPSHOT
 
 WORKDIR /opt/
 RUN mvn dependency:get -DrepoUrl=https://oss.sonatype.org/content/repositories/snapshots/ \
 -Dartifact=org.restheart:restheart:${release}:zip \
--Ddest=restheart.zip
-
-RUN unzip restheart.zip && mv restheart-${release} restheart
+-Ddest=restheart.zip \
+&& unzip restheart.zip \
+&& mv restheart-${release} restheart \
+&& rm restheart.zip \
+&& rm -rf ~/.m2
 
 WORKDIR /opt/restheart
 COPY etc/* /opt/restheart/etc/
