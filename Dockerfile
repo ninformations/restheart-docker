@@ -5,10 +5,12 @@ MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 ENV release 1.1.5
 
 WORKDIR /opt/
-ADD https://github.com/SoftInstigate/restheart/releases/download/${release}/restheart-${release}.tar.gz /opt/
-RUN tar zxvf restheart-${release}.tar.gz \
+COPY nexus.sh /opt/
+
+RUN ./nexus.sh -i org.restheart:restheart:${release} -p tar.gz > restheart.tar.gz \
+&& tar -zxvf restheart.tar.gz \
 && mv restheart-${release} restheart \
-&& rm -f restheart-${release}.tar.gz
+&& rm -f restheart.tar.gz
 
 WORKDIR /opt/restheart
 COPY etc/* /opt/restheart/etc/
