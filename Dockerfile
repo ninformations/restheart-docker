@@ -1,16 +1,16 @@
-FROM maven:3-jdk-8
+FROM java:8u72-jre
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
 ENV release 2.0.0-SNAPSHOT
 
 WORKDIR /opt/
-RUN mvn dependency:get -DrepoUrl=https://oss.sonatype.org/content/repositories/snapshots/ \
--Dartifact=org.restheart:restheart:${release}:zip \
--Ddest=restheart.zip \
-&& unzip restheart.zip \
+COPY nexus.sh /opt/
+
+RUN ./nexus.sh -i org.restheart:restheart:${release} -p tar.gz > restheart.tar.gz \
+&& tar -zxvf restheart.tar.gz \
 && mv restheart-${release} restheart \
-&& rm -f restheart.zip
+&& rm -f restheart.tar.gz
 
 WORKDIR /opt/restheart
 COPY etc/* /opt/restheart/etc/
