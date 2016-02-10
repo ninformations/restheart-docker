@@ -10,7 +10,7 @@ RUN mvn dependency:get -DrepoUrl=https://oss.sonatype.org/content/repositories/s
 -Ddest=restheart.zip \
 && unzip restheart.zip \
 && mv restheart-${release} restheart \
-&& rm -f restheart.zip \
+&& rm -f restheart.zip
 
 WORKDIR /opt/restheart
 COPY etc/* /opt/restheart/etc/
