@@ -2,7 +2,7 @@ FROM java:8u72-jre
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
-ENV release 2.0.0-SNAPSHOT
+ENV release 2.0.0-beta-1
 
 WORKDIR /opt/
 COPY nexus.sh /opt/
