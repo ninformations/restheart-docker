@@ -1,24 +1,24 @@
-# Docker for RESTHeart (SNAPSHOTs)
+# Docker for RESTHeart (development branch)
 
-[![](https://badge.imagelayers.io/softinstigate/restheart:snapshot.svg)](https://imagelayers.io/?images=softinstigate/restheart:snapshot 'Get your own badge on imagelayers.io')
+[![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io')
 
 [Docker](https://www.docker.com) container for [RESTHeart](http://restheart.org).
 It creates a Docker container with a JVM running RESTHeart, linked to another container running MongoDB, which makes use of the official [MongoDB](https://registry.hub.docker.com/_/mongo/) image.
 
-**Note**: this docker container runs the experimental SNAPSHOT builds of RESTHeart (downloaded from Maven Central). SNAPSHOT images are tagged with `snapshot` in Docker Hub.
+**Note**: this docker container runs the experimental **Beta** builds of RESTHeart (downloaded from Maven Central). SNAPSHOT images are tagged with `2.0.0-beta-*` in Docker Hub.
 
 ## Setup
 
 ### 1) Pull the MongoDB and RESTHeart images:
 
  1. `docker pull mongo`
- 1. `docker pull softinstigate/restheart:snapshot`
+ 1. `docker pull softinstigate/restheart:2.0.0-beta-1`
 
  Note: if you want to pull a specific mongodb image only, you could add the exact tag, for example:
 
     docker pull mongo:3.2
 
-### 2) Run the MongoDB container (add a tag to specify the exact MongoDB version other than "latest"):
+### 2) Run the MongoDB container:
 
 `docker run -d --name mongodb mongo:3.2`
 
@@ -32,11 +32,11 @@ The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever
 
 interactively:
 
-`docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart:snapshot`
+`docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart:2.0.0-beta-1`
 
 Or in background:
 
-`docker run -d -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart:snapshot`
+`docker run -d -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart:2.0.0-beta-1`
 
 ### 4) Check that is working:
 
@@ -58,10 +58,10 @@ You can append arguments to *docker run* command to provide RESTHeart and the JV
 
 For example you can mount an alternate configuration file and specify it as an argument
 
-`docker run -i -t -p 8080:8080 -v my-conf-file.yml:/opt/restheart/etc/my-conf-file.yml:ro --name restheart --link mongodb:mongodb softinstigate/restheart:snapshot my-conf-file.yml`
+`docker run -i -t -p 8080:8080 -v my-conf-file.yml:/opt/restheart/etc/my-conf-file.yml:ro --name restheart --link mongodb:mongodb softinstigate/restheart:2.0.0-beta-1 my-conf-file.yml`
 
 If you want to pass system properties to the JVM, just specify -D or -X arguments. Note that in this case you **need** to provide the configuration file as well.
 
-`docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart:snapshot restheart.yml -Dkey=value`
+`docker run -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart:2.0.0-beta-1 restheart.yml -Dkey=value`
 
 Available at the [Docker Hub](https://registry.hub.docker.com/u/softinstigate/restheart/).
