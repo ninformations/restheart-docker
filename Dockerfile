@@ -1,8 +1,10 @@
-FROM java:8u72-jre
+FROM anapsix/alpine-java:jre8
 
 MAINTAINER SoftInstigate <maurizio@softinstigate.com>
 
 ENV release 2.0.0-beta-1
+
+RUN apk update && apk upgrade && apk add curl
 
 WORKDIR /opt/
 COPY nexus.sh /opt/
