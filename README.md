@@ -2,11 +2,12 @@
 
 ![Docker logo](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
 
-## Latest stable image (tag: _latest_)
-[![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io')
+## Tags
 
-## Latest beta image
-[![](https://badge.imagelayers.io/softinstigate/restheart:2.0.0-beta-1.svg)](https://imagelayers.io/?images=softinstigate/restheart:2.0.0-beta-1 'Get your own badge on imagelayers.io')
+| tag | size |
+|-----|------|
+| latest | [![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io') |
+| beta | [![](https://badge.imagelayers.io/softinstigate/restheart:2.0.0-beta-1.svg)](https://imagelayers.io/?images=softinstigate/restheart:2.0.0-beta-1 'Get your own badge on imagelayers.io') |
 
 ## Run
 
