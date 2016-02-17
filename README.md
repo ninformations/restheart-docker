@@ -8,17 +8,7 @@
 ## Latest beta image
 [![](https://badge.imagelayers.io/softinstigate/restheart:2.0.0-beta-1.svg)](https://imagelayers.io/?images=softinstigate/restheart:2.0.0-beta-1 'Get your own badge on imagelayers.io')
 
-## Build
-
-If you want to build this Docker image by yourself, just clone this repo and issue the build command, providing your own image name:
-
-    docker build -t <image_name> .
-    
-> Pre-built images are already available at the [Docker Hub](https://hub.docker.com/r/softinstigate/restheart/).    
-
 ## Run
-
-If you want to [run](https://docs.docker.com/reference/commandline/run/) the pre-built Docker image from the [Hub](https://hub.docker.com/r/softinstigate/restheart/) then:
 
 ### 1) Pull the MongoDB and RESTHeart images
 
@@ -31,11 +21,11 @@ If you want to [run](https://docs.docker.com/reference/commandline/run/) the pre
 
     docker run -d --name mongodb mongo:3.2
 
-If you want to make it accessible from your host and, for example, also add a [persistent data volume](https://docs.docker.com/userguide/dockervolumes/):
+To make it accessible from your host and add a [persistent data volume](https://docs.docker.com/userguide/dockervolumes/):
 
     docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.2
 
-The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever you like. If you don't attach a volume then all your data will be lost when you delete the container.
+The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever you like. If you don't attach a volume then your data will be lost when you delete the container.
 
 ### 3) Run RESTHeart interactively
 
