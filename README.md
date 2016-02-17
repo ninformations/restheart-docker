@@ -2,11 +2,12 @@
 
 ![Docker logo](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
 
-## Latest stable image (tag: _latest_)
-[![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io')
+## Tags
 
-## Latest beta image
-[![](https://badge.imagelayers.io/softinstigate/restheart:2.0.0-beta-1.svg)](https://imagelayers.io/?images=softinstigate/restheart:2.0.0-beta-1 'Get your own badge on imagelayers.io')
+| tag | size |
+|-----|------|
+| latest | [![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io') |
+| beta | [![](https://badge.imagelayers.io/softinstigate/restheart:2.0.0-beta-1.svg)](https://imagelayers.io/?images=softinstigate/restheart:2.0.0-beta-1 'Get your own badge on imagelayers.io') |
 
 ## Run
 
@@ -53,7 +54,7 @@ For example you can mount an alternate configuration file and specify it as an a
 
 If you want to pass system properties to the JVM, just specify -D or -X arguments. Note that in this case you **need** to provide the configuration file as well.
 
-`docker run --rm -i -t -p 8080:8080 --name restheart --link mongodb:mongodb softinstigate/restheart etc/restheart.yml -Dkey=value`
+`docker run --rm -i -t -p 80:8080 --name restheart --link mongodb:mongodb softinstigate/restheart etc/restheart.yml -Dkey=value`
 
 ## Accessing the HAL Browser
 
