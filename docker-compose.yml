@@ -1,0 +1,9 @@
+mongodb:
+  image: mongo:3.2
+
+restheart:
+  image: softinstigate/restheart
+  links:
+      - mongodb
+  ports:
+    - "80:8080"
