@@ -66,7 +66,7 @@ Beware your configuration might use a different IP address than `192.168.99.100`
 
 If you are running Docker directly on a Linux box:
 
- * [http://localhost:8080/browser](http://localhost:8080/browser).
+ * [http://localhost/browser](http://localhost/browser).
 
 ### Credentials
 
