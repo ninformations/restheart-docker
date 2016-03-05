@@ -1,6 +1,7 @@
-# Docker container for RESTHeart
+# Docker images for RESTHeart
 
-![Docker logo](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
+<img src="https://www.mongodb.com/assets/MongoDB_Brand_Resources/powered-by-mongodb-logo-light-a07ae588cd2d5f460ccc886b2d76476dc256bd7d8d376f884102d09d36885320.jpg" width="200" alt="MongoDB logo">
+<img src="https://www.docker.com/sites/all/themes/docker/assets/images/logo.png" width="240" alt="Docker logo">
 
 ## Tags
 
