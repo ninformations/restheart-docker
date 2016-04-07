@@ -9,7 +9,7 @@ RUN apk update && apk upgrade && apk add curl
 WORKDIR /opt/
 COPY nexus.sh /opt/
 
-RUN ./nexus.sh -i org.restheart:restheart:${release} -p tar.gz > restheart.tar.gz \
+RUN chmod a+x nexus.sh && ./nexus.sh -i org.restheart:restheart:${release} -p tar.gz > restheart.tar.gz \
 && tar -zxvf restheart.tar.gz \
 && mv restheart-${release} restheart \
 && rm -f restheart.tar.gz
