@@ -2,14 +2,9 @@
 
 ![Docker logo](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
 
-## Tags
-
-| tag | size |
-|-----|------|
-| latest | [![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io') |
-| beta | [![](https://badge.imagelayers.io/softinstigate/restheart:2.0.0-beta-1.svg)](https://imagelayers.io/?images=softinstigate/restheart:2.0.0-beta-1 'Get your own badge on imagelayers.io') |
-
 ## Run
+
+**Warning**: This has been tested with docker version 1.10+. Please [upgrade](https://docs.docker.com/engine/installation/) if you have an older docker version. To check your version: `$ docker -v`
 
 ### 1) Pull the MongoDB and RESTHeart images
 
