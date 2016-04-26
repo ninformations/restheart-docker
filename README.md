@@ -3,16 +3,9 @@
 <img src="https://www.mongodb.com/assets/MongoDB_Brand_Resources/powered-by-mongodb-logo-light-a07ae588cd2d5f460ccc886b2d76476dc256bd7d8d376f884102d09d36885320.jpg" width="200" alt="MongoDB logo">
 <img src="https://www.docker.com/sites/all/themes/docker/assets/images/logo.png" width="240" alt="Docker logo">
 
-## Tags
-
-| tag | size |
-|-----|------|
-| latest | [![](https://badge.imagelayers.io/softinstigate/restheart:latest.svg)](https://imagelayers.io/?images=softinstigate/restheart:latest 'Get your own badge on imagelayers.io') |
-| beta | [![](https://badge.imagelayers.io/softinstigate/restheart:2.0.0-beta-1.svg)](https://imagelayers.io/?images=softinstigate/restheart:2.0.0-beta-1 'Get your own badge on imagelayers.io') |
-
 ## Run
 
-> This has been tested with docker version 1.10+. Please [upgrade](https://docs.docker.com/engine/installation/) if you have an older docker version. To check your version: `$ docker -v`
+**Warning**: This has been tested with docker version 1.10+. Please [upgrade](https://docs.docker.com/engine/installation/) if you have an older docker version. To check your version: `$ docker -v`
 
 ### 1) Pull the MongoDB and RESTHeart images
 
