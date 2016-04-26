@@ -12,6 +12,8 @@
 
 ## Run
 
+> This has been tested with docker version 1.10+. Please [upgrade](https://docs.docker.com/engine/installation/) if you have an older docker version. To check your version: `$ docker -v`
+
 ### 1) Pull the MongoDB and RESTHeart images
 
  1. `docker pull mongo:3.2`
