@@ -1,7 +1,6 @@
 # Docker images for RESTHeart
 
-<img src="https://www.mongodb.com/assets/MongoDB_Brand_Resources/powered-by-mongodb-logo-light-a07ae588cd2d5f460ccc886b2d76476dc256bd7d8d376f884102d09d36885320.jpg" width="200" alt="MongoDB logo">
-<img src="https://www.docker.com/sites/all/themes/docker/assets/images/logo.png" width="240" alt="Docker logo">
+[![Docker Stars](https://img.shields.io/docker/stars/softinstigate/restheart.svg?maxAge=2592000)](https://hub.docker.com/r/softinstigate/restheart/) [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg?maxAge=2592000)](https://hub.docker.com/r/softinstigate/restheart/)
 
 ## Run
 
