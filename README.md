@@ -1,6 +1,6 @@
 # Docker container for RESTHeart
 
-![Docker logo](https://www.docker.com/sites/all/themes/docker/assets/images/logo.png)
+[![Docker Stars](https://img.shields.io/docker/stars/softinstigate/restheart.svg?maxAge=2592000)](https://hub.docker.com/r/softinstigate/restheart/) [![Docker Pulls](https://img.shields.io/docker/pulls/softinstigate/restheart.svg?maxAge=2592000)](https://hub.docker.com/r/softinstigate/restheart/)
 
 ## Run
 
