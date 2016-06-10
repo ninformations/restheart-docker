@@ -19,6 +19,8 @@ services:
       build: .
       ### Uncomment to name the container explicitly
       #container_name: restheart
+      depends_on:
+         - mongodb
       networks:
          - backend
       ports:
