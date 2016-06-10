@@ -3,17 +3,16 @@
 SPROPS="";
 ARGS=""
 
-while [[ $# > 0 ]]
+while [[ $# -gt 0 ]]
 do
-    key="$1"
+   key="$1"
+   if [ "${key:0:2}" == '-D' ] || [ "${key:0:2}" == '-X' ]; then
+      SPROPS="$SPROPS $key"
+   else
+      ARGS="$ARGS $key"
+   fi
 
-    if [ "${key:0:2}" == '-D' ] || [ "${key:0:2}" == '-X' ]; then
-	SPROPS="$SPROPS $key"
-    else
-	ARGS="$ARGS $key"
-    fi
-
-    shift
+   shift
 done
 
 java -server $SPROPS -jar /opt/restheart/restheart.jar $ARGS
