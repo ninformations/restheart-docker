@@ -2,7 +2,18 @@
 
 [![Docker Stars](https://img.shields.io/docker/stars/softinstigate/restheart.svg?maxAge=2592000)](https://hub.docker.com/r/softinstigate/restheart/) [![Docker Pulls](https://img.shields.io/docker/pulls/softinstigate/restheart.svg?maxAge=2592000)](https://hub.docker.com/r/softinstigate/restheart/)
 
-## Run
+## TL;DR - Use docker-compose
+
+RESTHeart fully embraces a microservices architecture. The most convenient way to run RESTHeart + MongoDB as docker containers is to use [docker-compose](https://docs.docker.com/compose/).
+
+The file `docker-compose.yml` defines a single microservice made of a RESTHeart and MongoDB instance configured to work together.
+To start both services just type:
+
+```
+docker-compose up -d
+```
+
+## Build and run manually
 
 **Warning**: This has been tested with docker version 1.10+. Please [upgrade](https://docs.docker.com/engine/installation/) if you have an older docker version. To check your version: `$ docker -v`
 
@@ -15,11 +26,15 @@
 
 ### 2) Run the MongoDB container
 
-    docker run -d --name mongodb mongo:3.2
+```
+docker run -d --name mongodb mongo:3.2
+```
 
 To make it accessible from your host and add a [persistent data volume](https://docs.docker.com/userguide/dockervolumes/):
 
-    docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.2
+```
+docker run -d -p 27017:27017 --name mongodb -v <db-dir>:/data/db mongo:3.2
+```
 
 The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever you like. If you don't attach a volume then your data will be lost when you delete the container.
 
@@ -27,17 +42,23 @@ The `<db-dir>` must be a folder in your host, such as `/var/data/db` or whatever
 
 Run in **foreground**, linking to the `mongodb` instance, mapping the container's 8080 port to the 80 port on host:
 
-    docker run --rm -i -t -p 80:8080 --name restheart --link mongodb softinstigate/restheart
+```
+docker run --rm -i -t -p 80:8080 --name restheart --link mongodb softinstigate/restheart
+```
 
 In alternative, you might prefer to run it in **background**:
 
-    docker run -d -p 80:8080 --name restheart --link mongodb softinstigate/restheart
+```
+docker run -d -p 80:8080 --name restheart --link mongodb softinstigate/restheart
+```
 
 ### 4) Check that is working:
 
 If it's running in background, you can open the RESTHeart's logs:
 
-    docker logs restheart
+```
+docker logs restheart
+```
 
 ### 5) Pass arguments to RESTHeart and JVM
 
@@ -45,11 +66,15 @@ You can append arguments to *docker run* command to provide RESTHeart and the JV
 
 For example you can mount an alternate configuration file and specify it as an argument
 
-`docker run --rm -i -t -p 80:8080 -v my-conf-file.yml:/opt/restheart/etc/my-conf-file.yml:ro --name restheart --link mongodb:mongodb softinstigate/restheart my-conf-file.yml`
+```
+docker run --rm -i -t -p 80:8080 -v my-conf-file.yml:/opt/restheart/etc/my-conf-file.yml:ro --name restheart --link mongodb:mongodb softinstigate/restheart my-conf-file.yml
+```
 
 If you want to pass system properties to the JVM, just specify -D or -X arguments. Note that in this case you **need** to provide the configuration file as well.
 
-`docker run --rm -i -t -p 80:8080 --name restheart --link mongodb:mongodb softinstigate/restheart etc/restheart.yml -Dkey=value`
+```
+docker run --rm -i -t -p 80:8080 --name restheart --link mongodb:mongodb softinstigate/restheart etc/restheart.yml -Dkey=value
+```
 
 ## Accessing the HAL Browser
 
@@ -98,7 +123,7 @@ Note that you must **always stop RESTHeart before MongoDB**, or you might experi
 
 ## Next Steps
 
-When you containers are up and running you can go to the official [RESTHEart's Documentation](https://softinstigate.atlassian.net/wiki/display/RH/Documentation).
+When you containers are up and running you can go to the official [RESTHeart's Documentation](https://softinstigate.atlassian.net/wiki/display/RH/Documentation).
 
 <hr></hr>
 
