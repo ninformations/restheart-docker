@@ -6,7 +6,7 @@
 
 ## TL;DR - Use docker-compose
 
-RESTHeart fully embraces a microservices architecture. The quickest way to run RESTHeart + MongoDB both as docker containers is to use [docker-compose](https://docs.docker.com/compose/).
+RESTHeart fully embraces a [microservices](http://martinfowler.com/articles/microservices.html) architecture. The quickest way to run RESTHeart + MongoDB both as docker containers is to use [docker-compose](https://docs.docker.com/compose/).
 
 The file `docker-compose.yml` defines a single microservice made of a RESTHeart and MongoDB instance configured to work together.
 To start both services just type:
