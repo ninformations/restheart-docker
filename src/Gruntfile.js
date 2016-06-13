@@ -23,7 +23,7 @@ module.exports = function (grunt) {
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist',
-    proxyUrl: 'http://192.168.99.100:8080/'
+    proxyUrl: 'http://restheart:8080/'
   };
 
   // Define the configuration for all the tasks
