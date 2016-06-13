@@ -1,0 +1,91 @@
+<div class="container-inline">
+<div>
+  <h3 class="banner-title">Vendor Landing Page</h3>
+  <div class="search-form">
+    <div class="pull-left">
+    <form class="form" ng-submit="dashboard.search(dashboard.filter);">
+      <input type="text" ng-model="dashboard.filter.chain_id['$regex']" placeholder="Chain / Vendor ID" size="30"  />
+      <input type="text" ng-model="dashboard.filter.area_id['$regex']" placeholder="City / Area / SubArea ID" size="30" />
+      <input type="submit" value="Search"/>
+    </form>
+    </div>
+    <div class="pull-right"><input type="button" ng-click="dashboard.addNew()" value="Add New"/></div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr><th>Chain&nbsp;/ Vendor&nbsp;ID</th>
+      <th>City&nbsp;/ Area&nbsp;/ SubArea&nbsp;ID</th>
+      <th>Title</th>
+      <th>Sub Title</th>
+      <th>Type</th>
+      <th>Deeplink</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Campaign ID</th>
+      <th>Image Url</th>
+      <th>Pan India</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="(key, item) in dashboard.banners">
+      <td>
+        <input type="text" ng-model="item.chain_id" ng-if="item.editable" placeholder="Chain / Vendor ID" />
+        <span ng-if="!item.editable">{{item.chain_id || "N/A"}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.area_id" ng-if="item.editable" placeholder="City / Area / SubArea ID" />
+        <span ng-if="!item.editable">{{item.area_id || "N/A"}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.title" ng-if="item.editable" placeholder="Title" />
+        <span ng-if="!item.editable">{{item.title}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.subtitle" ng-if="item.editable" placeholder="Sub Title" />
+        <span ng-if="!item.editable">{{item.subtitle}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.type" ng-if="item.editable" placeholder="Type" />
+        <span ng-if="!item.editable">{{item.type}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.deeplink" ng-if="item.editable" placeholder="Deeplink"/>
+        <span ng-if="!item.editable">{{item.deeplink}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.from_timestamp" ng-if="item.editable" placeholder="From" />
+        <span ng-if="!item.editable">{{item.from_timestamp}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.to_timestamp" ng-if="item.editable" placeholder="To"/>
+        <span ng-if="!item.editable">{{item.to_timestamp}}</span>
+      </td>
+      <td>
+        <input type="text" ng-model="item.campaign_id" ng-if="item.editable" placeholder="Campaign ID"/>
+        <span ng-if="!item.editable">{{item.campaign_id || "N/A"}}</span>
+      </td>
+      <td title="{{item.image_url}}">
+        <input type="text" ng-model="item.image_url" ng-if="item.editable" placeholder="Image URL"/>
+        <span ng-if="!item.editable">
+          <span ng-if="item.image_url.length > 30"><a href="{{item.image_url}}" target="_blank">{{item.image_url.substr(0,30)}}...</a></span>
+          <span ng-if="item.image_url.length < 30"><a href="{{item.image_url}}" target="_blank">{{item.image_url}}</a></span>
+        </span>
+      </td>
+      <td>
+        <input type="checkbox" ng-model="item.is_panindia" ng-if="item.editable" />
+        <span ng-if="!item.editable">{{item.is_panindia}}</span>
+      </td>
+      <td>
+        <a href="javascript:void(0);" ng-if="!item.editable" ng-click="item.editable = !item.editable;"><span >Edit</span></a>
+        <a href="javascript:void(0);" ng-if="item.editable && item._id" ng-click="dashboard.saveBanner(key, item);"><span>Save</span></a>
+        <a href="javascript:void(0);" ng-if="item._id" ng-click="dashboard.deleteBanner(item);"><span>Delete</span></a>
+        <a href="javascript:void(0);" ng-if="item.editable && !item._id" ng-click="dashboard.removeBanner(key);"><span>Remove</span></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div style="text-align: right;"><input type="button" ng-show="dashboard.hasNew" ng-click="dashboard.saveNewBanners();" value="Save"/></div>
+</div>
+</div>
+<style type="text/css">body {width: 1950px;}</style>
