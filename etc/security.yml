@@ -20,9 +20,9 @@ permissions:
     - role: admins
       predicate: path-prefix[path="/"]
 
-# not authenticated user can only GET any resource under the /publicdb URI
+# not authenticated user can only GET any resource under the /banners/vlp URI
     - role: $unauthenticated
-      predicate: path-prefix[path="/publicdb/"] and method[value="GET"]
+      predicate: path-prefix[path="/banners/vlp"] and method[value="GET"]
 
 # users with role 'users' can GET any collection or document resource (excluding dbs)
     - role: users
