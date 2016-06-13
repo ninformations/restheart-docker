@@ -10,7 +10,7 @@
  angular.module('adminApp')
  .service('Authentication', function ($http, $cookieStore, $rootScope, $timeout) {
     // AngularJS will instantiate a singleton by calling "new" on this function
-   const baseUrl = '//192.168.99.100/_logic/roles';
+   const baseUrl = '//'+window.location.hostname+':8080/_logic/roles';
     var service = {};
 
     service.Login = Login;

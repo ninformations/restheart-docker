@@ -9,7 +9,7 @@
  */
 angular.module('adminApp')
   .service('banner', function ($http) {
-    const baseUrl = '//192.168.99.100/api/banners/vlp';
+    const baseUrl = '//'+window.location.hostname+':8080/banners/vlp';
     var service = {};
     service.getBanners = GetBanners;
     service.saveBanners = SaveBanners;
