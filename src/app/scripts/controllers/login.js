@@ -25,7 +25,7 @@
  			} else {
  				alert(response.message);
  				//FlashService.Error(response.message);
- 				//self.dataLoading = false;
+ 				self.dataLoading = false;
  			}
  		});
  	};

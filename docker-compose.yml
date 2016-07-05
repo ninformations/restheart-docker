@@ -15,7 +15,7 @@ volumes:
 
 services:
    frontend:
-      build: ./src
+      build: $PWD/src
       ### Uncomment to name the container explicitly
       container_name: frontend
       depends_on:
@@ -24,6 +24,10 @@ services:
          - backend
       ports:
          - "80:9000"
+#         - "35729:35729"
+#      volumes:
+#         - $PWD/src/app:/usr/src/app/app:ro
+
 
    restheart:
       image: softinstigate/restheart:latest
@@ -42,7 +46,7 @@ services:
    mongodb:
       image: mongo:3.2
       ### Uncomment to name the container explicitly
-      #container_name: restheart-mongo
+      container_name: mongodb
       volumes:
          - datavolume:/data/db
       networks:

@@ -21,8 +21,13 @@ permissions:
       predicate: path-prefix[path="/"]
 
 # not authenticated user can only GET any resource under the /banners/vlp URI
-    - role: $unauthenticated
-      predicate: path-prefix[path="/banners/vlp"] and method[value="GET"]
+#    - role: $unauthenticated
+#      predicate: path-prefix[path="/banners/vlp"] and method[value="GET"]
+
+# users with role 'banners' can GET banner collection or document resource (excluding dbs)
+    - role: banners
+      predicate: regex[pattern="/banners/.*", value="%R", full-match=true] and method[value="GET"]
+
 
 # users with role 'users' can GET any collection or document resource (excluding dbs)
     - role: users

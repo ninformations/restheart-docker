@@ -120,7 +120,8 @@ module.exports = function (grunt) {
             var url = require('url');
             var proxyOptions = url.parse(appConfig.proxyUrl);
             proxyOptions.route = '/api';
-            proxyOptions.headers = true;
+            proxyOptions.headers = {Authorization: 'Basic YXBpdXNlcjpjaGFuZ2VtZQ=='};
+
             return [
               proxy(proxyOptions),
               connect.static(appConfig.dist)
