@@ -46,7 +46,12 @@
         <span ng-if="!item.editable">{{item.subtitle}}</span>
       </td>
       <td>
-        <input type="text" ng-model="item.type" ng-if="item.editable" placeholder="Type" />
+        <select ng-model="item.type" ng-if="item.editable" placeholder="Type">
+          <option value="info">Info</option>
+          <option value="deeplink">Deeplink</option>
+          <option value="filter">Filter</option>
+        </select>
+        <!--<input type="text" ng-model="item.type" ng-if="item.editable" placeholder="Type" />-->
         <span ng-if="!item.editable">{{item.type}}</span>
       </td>
       <td>
