@@ -54,11 +54,11 @@
         <span ng-if="!item.editable">{{item.deeplink}}</span>
       </td>
       <td>
-        <input type="text" ng-model="item.from_timestamp" ng-if="item.editable" placeholder="From" />
+        <span class="relative"><input type="text" datetimepicker-options="{format:false}" ng-model="item.from_timestamp" datetimepicker ng-if="item.editable" placeholder="From" /></span>
         <span ng-if="!item.editable">{{item.from_timestamp}}</span>
       </td>
       <td>
-        <input type="text" ng-model="item.to_timestamp" ng-if="item.editable" placeholder="To"/>
+        <span class="relative"><input type="text" ng-model="item.to_timestamp" datetimepicker ng-if="item.editable" placeholder="To"/></span>
         <span ng-if="!item.editable">{{item.to_timestamp}}</span>
       </td>
       <td>
