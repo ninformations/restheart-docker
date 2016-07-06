@@ -27,19 +27,32 @@ angular.module('adminApp')
     }
 
     function SearchBanners(data, callback) {
-      if(data.chain_id && data.chain_id['$regex'] == "") {
-        delete data.chain_id;
+      var submitData = angular.copy(data);
+      submitData.filter = (function (data) {
+        if(!data) return undefined;
+        if (data.chain_id && data.chain_id['$regex'] == "") delete data.chain_id;
+        if (data.area_id  && data.area_id['$regex'] == "")  delete data.area_id;
+
+        return angular.toJson(data);
+      })(submitData.filter);
+
+      submitData.sort = (function(data) {
+        return angular.toJson(data);
+      })(submitData.sort);
+
+      if(!submitData.sort || angular.toJson(submitData.sort) == "{}") {
+        delete submitData.sort;
       }
 
-      if(data.area_id && data.area_id['$regex'] == "") {
-        delete data.area_id;
+      if(!submitData.filter || angular.toJson(submitData.filter) == "{}") {
+        delete submitData.filter;
       }
 
-      if(angular.toJson(data) == "{}") {
+      if (angular.toJson(submitData) == "{}") {
         return GetBanners(callback);
       }
 
-      $http.get(baseUrl+'/?filter='+angular.toJson(data)).then(function (response) {
+      $http.get(baseUrl+'/?'+$.param(submitData)).then(function (response) {
         var data = response.data;
         data.success = true;
         callback(data);

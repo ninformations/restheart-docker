@@ -1,11 +1,11 @@
 <div class="container-inline">
 <div>
-  <h3 class="banner-title">Vendor Landing Page</h3>
-  <div class="search-form">
+  <h3 class="banner-title col-md-5">Vendor Landing Page</h3>
+  <div class="search-form col-md-7 h3-padding">
     <div class="pull-left">
-    <form class="form" ng-submit="dashboard.search(dashboard.filter);">
-      <input type="text" ng-model="dashboard.filter.chain_id['$regex']" placeholder="Chain / Vendor ID" size="30"  />
-      <input type="text" ng-model="dashboard.filter.area_id['$regex']" placeholder="City / Area / SubArea ID" size="30" />
+    <form class="form" ng-submit="dashboard.search(dashboard.filters);">
+      <input type="text" ng-model="dashboard.filters.filter.chain_id['$regex']" placeholder="Chain / Vendor ID" size="30"  />
+      <input type="text" ng-model="dashboard.filters.filter.area_id['$regex']" placeholder="City / Area / SubArea ID" size="30" />
       <input type="submit" value="Search"/>
     </form>
     </div>
@@ -13,17 +13,45 @@
   </div>
   <table class="table">
     <thead>
-    <tr><th>Chain&nbsp;/ Vendor&nbsp;ID</th>
-      <th>City&nbsp;/ Area&nbsp;/ SubArea&nbsp;ID</th>
-      <th>Title</th>
-      <th>Sub Title</th>
-      <th>Type</th>
+    <tr>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'chain_id' ? '-chain_id' : 'chain_id'; dashboard.search(dashboard.filters) ">
+        Chain&nbsp;/ Vendor&nbsp;ID
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'chain_id')" aria-hidden="true"></span>
+      </th>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'area_id' ? '-area_id' : 'area_id'; dashboard.search(dashboard.filters) ">
+        City&nbsp;/ Area&nbsp;/ SubArea&nbsp;ID
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'area_id')" aria-hidden="true"></span>
+      </th>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'title' ? '-title' : 'title'; dashboard.search(dashboard.filters) ">
+        Title
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'title')" aria-hidden="true"></span>
+      </th>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'subtitle' ? '-subtitle' : 'subtitle'; dashboard.search(dashboard.filters) ">
+        Sub Title
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'subtitle')" aria-hidden="true"></span>
+      </th>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'type' ? '-type' : 'type'; dashboard.search(dashboard.filters) ">
+        Type
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'type')" aria-hidden="true"></span>
+      </th>
       <th>Deeplink</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Campaign ID</th>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'from_timestamp' ? '-from_timestamp' : 'from_timestamp'; dashboard.search(dashboard.filters) ">
+        From
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'from_timestamp')" aria-hidden="true"></span>
+      </th>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'to_timestamp' ? '-to_timestamp' : 'to_timestamp'; dashboard.search(dashboard.filters) ">
+        To
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'to_timestamp')" aria-hidden="true"></span>
+      </th>
+      <th ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'campaign_id' ? '-campaign_id' : 'campaign_id'; dashboard.search(dashboard.filters) ">
+        Campaign ID
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'campaign_id')" aria-hidden="true"></span>
+      </th>
       <th>Image Url</th>
-      <th>Pan India</th>
+      <th class="cursor-pointer" ng-click="dashboard.filters.sort_by = dashboard.filters.sort_by == 'is_panindia' ? '-is_panindia' : 'is_panindia'; dashboard.search(dashboard.filters) ">
+        Pan India
+        <span class="glyphicon glyphicon" ng-class="dashboard.getSortClass(dashboard.filters, 'is_panindia')" aria-hidden="true"></span>
+      </th>
       <th>Actions</th>
     </tr>
     </thead>

@@ -11,10 +11,10 @@ angular.module('adminApp')
   .controller('DashboardCtrl', function (banner) {
     var self = this;
     self.banners = [];
-    self.filter = {
-      "chain_id": {"$regex": ""},
-      "area_id":  {"$regex": ""}
-    };
+    //self.filter = {
+    //  "chain_id": {"$regex": ""},
+    //  "area_id":  {"$regex": ""}
+    //};
 
     self.awesomeThings = [
       'HTML5 Boilerplate',
@@ -37,6 +37,19 @@ angular.module('adminApp')
       banner.searchBanners(filters, function(response) {
         self.banners = response._embedded["rh:doc"];
       })
+    }
+
+
+    self.getSortClass = function (filters, findValue) {
+      if(!filters || !filters.sort_by) return 'glyphicon-sort';
+      switch (filters.sort_by) {
+        case findValue:
+              return 'glyphicon-sort-by-alphabet';
+        case '-'+findValue:
+              return 'glyphicon-sort-by-alphabet-alt';
+        default:
+              return 'glyphicon-sort';
+      }
     }
 
     self.deleteBanner = function (item) {

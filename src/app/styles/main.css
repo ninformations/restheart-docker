@@ -19,6 +19,13 @@ body {
 .relative {
   position: relative;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
+.h3-padding {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
